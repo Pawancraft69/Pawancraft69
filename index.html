@@ -1,145 +1,122 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Pawancraft69</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>PawanCraft69 - Home</title>
   <style>
     body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f8f9fa;
       margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(#0f0f0f, #1f1f1f);
-      color: white;
+      padding: 0;
     }
-
     header {
-      background-color: #121212;
-      padding: 20px;
+      background-color: #343a40;
+      color: white;
+      padding: 20px 10px;
       text-align: center;
-      border-bottom: 2px solid #ff9900;
     }
-
-    header h1 {
-      margin: 0;
-      font-size: 32px;
-      color: #ff9900;
-    }
-
     nav {
-      background: #222;
+      background-color: #495057;
+      padding: 10px;
       display: flex;
       justify-content: center;
-      gap: 30px;
-      padding: 15px;
-      border-bottom: 1px solid #333;
+      gap: 20px;
     }
-
     nav a {
       color: white;
       text-decoration: none;
       font-weight: bold;
-      transition: color 0.3s;
     }
-
-    nav a:hover {
-      color: #ff9900;
-    }
-
-    .main {
+    .container {
       padding: 30px;
+      max-width: 1000px;
+      margin: auto;
+    }
+    .search-box {
       text-align: center;
+      margin-bottom: 20px;
     }
-
-    .main h2 {
-      font-size: 28px;
-      color: #ffcc00;
+    .search-box input {
+      width: 80%;
+      max-width: 400px;
+      padding: 10px;
+      font-size: 16px;
     }
-
-    .main p {
-      font-size: 18px;
-      line-height: 1.6;
-      max-width: 700px;
-      margin: 0 auto;
+    .app-store {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 20px;
     }
-
-    .download-btn {
-      margin-top: 30px;
+    .app {
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      transition: transform 0.2s;
     }
-
-    .download-btn a {
-      background-color: #ff9900;
-      color: black;
-      padding: 12px 25px;
-      border-radius: 8px;
-      font-weight: bold;
+    .app:hover {
+      transform: translateY(-5px);
+    }
+    .app a {
       text-decoration: none;
-      font-size: 18px;
-      transition: background 0.3s;
+      color: #007bff;
+      font-weight: bold;
     }
-
-    .download-btn a:hover {
-      background-color: #ffaa33;
-    }
-
     footer {
-      background: #111;
+      background-color: #343a40;
+      color: white;
       text-align: center;
       padding: 15px;
-      margin-top: 50px;
-      font-size: 14px;
-      color: #888;
-    }
-
-    @media (max-width: 600px) {
-      nav {
-        flex-direction: column;
-        gap: 15px;
-      }
-
-      .main h2 {
-        font-size: 24px;
-      }
-
-      .main p {
-        font-size: 16px;
-      }
+      margin-top: 40px;
     }
   </style>
 </head>
 <body>
   <header>
-    <h1>🔥 Pawancraft69 🔥</h1>
+    <h1>Welcome to PawanCraft69</h1>
+    <p>Smart App Store Platform</p>
   </header>
 
   <nav>
-    <a href="#app">App</a>
-    <a href="#info">Info</a>
-    <a href="#help">Help</a>
-    <a href="#about">About</a>
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="privacy.html">Privacy</a>
   </nav>
 
-  <div class="main">
-    <h2 id="app">Download Our Official App</h2>
-    <p>Experience the power of Pawancraft69 – a combination of Free Fire energy and Minecraft creativity.</p>
-    <div class="download-btn">
-      <a href="#">Download App</a>
+  <div class="container">
+    <div class="search-box">
+      <input type="text" id="searchInput" placeholder="🔍 Search apps..." onkeyup="searchApps()" />
     </div>
 
-    <br><br>
-    <h2 id="info">Game Information</h2>
-    <p>Latest updates, new characters, special events, and unique mods all in one place.</p>
-
-    <br><br>
-    <h2 id="help">Need Help?</h2>
-    <p>Facing issues? Our support team is here to assist you. Contact us via email or Discord.</p>
-
-    <br><br>
-    <h2 id="about">About Pawancraft69</h2>
-    <p>Pawancraft69 is a unique creation by Pawan — combining creativity, passion, and tech to make awesome experiences.</p>
+    <div id="appStore" class="app-store">
+      <div class="app" data-name="calculator">
+        <h3>Biggest Calculator</h3>
+        <a href="calculator.html">Open App</a>
+      </div>
+      <div class="app" data-name="coming soon">
+        <h3>More Coming Soon</h3>
+        <a href="#">Stay Tuned</a>
+      </div>
+    </div>
   </div>
 
   <footer>
-    © 2025 Pawancraft69. All Rights Reserved.
+    Created by Pawan © 2025
   </footer>
+
+  <script>
+    function searchApps() {
+      var input = document.getElementById("searchInput").value.toLowerCase();
+      var apps = document.querySelectorAll(".app");
+      apps.forEach(app => {
+        let name = app.getAttribute("data-name").toLowerCase();
+        app.style.display = name.includes(input) ? "block" : "none";
+      });
+    }
+  </script>
 </body>
 </html>
